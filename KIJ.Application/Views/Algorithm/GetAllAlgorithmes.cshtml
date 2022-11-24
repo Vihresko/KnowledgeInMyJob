@@ -1,0 +1,10 @@
+﻿@using KIJ.Data.DtoModels
+@{
+    TempData["Title"] = "Algorithmes";
+}
+
+@model List<GetAlgorithmInfo>
+
+@foreach(var alg in Model){
+    <h6>@alg.Name</h6>
+}

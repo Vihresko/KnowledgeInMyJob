@@ -8,7 +8,9 @@ namespace KIJ.Core.Profiles
     {
         public AlgorithmProfile()
         {
+            // source -> target
             CreateMap<CreateAlgorithmDto, Algorithm>();
+            CreateMap<Algorithm, GetAlgorithmInfo>();
         }
     }
 }

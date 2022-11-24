@@ -3,7 +3,9 @@ using KIJ.Core.Interfaces;
 using KIJ.Data.DBContexts;
 using KIJ.Data.DBModels;
 using KIJ.Data.DtoModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace KIJ.Core.Services
 {
@@ -35,6 +37,17 @@ namespace KIJ.Core.Services
             }
             
 
+        }
+
+        public async Task<ICollection<GetAlgorithmInfo>> CollectAllAlgorithmesInfo()
+        {
+            var result = await _context.Algorithmes.AsQueryable().Select((x) => new GetAlgorithmInfo
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Type = x.Type
+            }).ToListAsync();
+            return result;
         }
     }
 }
